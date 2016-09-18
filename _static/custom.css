@@ -1,0 +1,43 @@
+/* works well with monokai pygments style
+slide div.highli2ght pre {
+    background-color: #272822 !important;
+}
+*/
+
+/* correctly style strong element */
+slides strong {
+    font-weight: bold;
+}
+
+/* logo in slides bottom-left */
+slides slide.level-2 article:before {
+    content: "";
+    background: url('logo.png') bottom left no-repeat;
+    background-size: contain;
+    width: 6em;
+    height: 2em;
+    position: absolute;
+    left: 60px;
+    bottom: 10px;
+}
+
+/* no footer on title slide */
+slides slide.title-slide .slide-footer {
+    visibility: hidden;
+}
+
+/* correctly position footer */
+slides .slide-footer {
+    font-size: 12pt;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    line-height: 1.9;  /* to fit with slide numbers */
+}
+
+slides .thank-you-slide {
+    background-color: #f78c1d !important;
+}
