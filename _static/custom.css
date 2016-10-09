@@ -9,20 +9,24 @@ slides strong {
     font-weight: bold;
 }
 
+slides .large-text {
+    font-size: 60px;
+}
+
 /* logo in slides bottom-left */
-slides slide.level-2 article:before {
+slides slide:not(.nobackground):before {
     content: "";
     background: url('logo.png') bottom left no-repeat;
     background-size: contain;
-    width: 6em;
-    height: 2em;
+    width: 200px;
+    height: 50px;
     position: absolute;
     left: 60px;
     bottom: 10px;
 }
 
 /* no footer on title slide */
-slides slide.title-slide .slide-footer {
+slides .nobackground .slide-footer {
     visibility: hidden;
 }
 
@@ -38,6 +42,8 @@ slides .slide-footer {
     line-height: 1.9;  /* to fit with slide numbers */
 }
 
-slides .thank-you-slide {
+slides .colored-slide {
     background-color: #f78c1d !important;
+    color: white;
 }
+

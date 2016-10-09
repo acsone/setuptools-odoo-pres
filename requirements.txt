@@ -1,11 +1,13 @@
 alabaster==0.7.9
 Babel==2.3.4
+colorama==0.3.7
 docutils==0.12
 -e git+https://github.com/nyergler/hieroglyph.git@800323deaee66b0d79ec697a0a7a1ab907bb4fe1#egg=hieroglyph
 imagesize==0.7.1
 Jinja2==2.8
 MarkupSafe==0.23
 pkg-resources==0.0.0
+prysenter==1.0
 Pygments==2.1.3
 pytz==2016.6.1
 six==1.10.0

@@ -2,25 +2,31 @@
 .. setuptools-odoo slides file, created by
    hieroglyph-quickstart on Sun Sep 18 10:39:57 2016.
 
+.. |acsone_logo| image:: _static/logo.png
+   :height: 100px
+   :target: http://acsone.eu/
 
-===============
-setuptools-odoo
-===============
+.. |oca_logo| image:: _static/oca.png
+   :height: 100px
+   :target: http://odoo-community.org/
 
-A modern Odoo development workflow with pip and virtualenv.
+.. |nbsp| unicode:: 0xa0
+
+=================================================
+Odoo development workflow with pip and virtualenv
+=================================================
+
+|acsone_logo| |nbsp| |nbsp| |nbsp| |nbsp| |nbsp| |oca_logo|
 
 |
 
-|
+Version 1.1.0
 
 Stéphane Bidoul <stephane.bidoul@acsone.eu>
 
-.. figure:: /_static/logo.png
-   :scale: 50%
-   :target: http://acsone.eu/
 
-The Python ecosystem packaging tools
-====================================
+Python ecosystem packaging tools
+================================
 
 .. rst-class:: build-item-1
 
@@ -56,7 +62,7 @@ Create and activate a new virtualenv named ``myproject``:
 .. code-block:: console
 
    $ virtualenv myproject
-   $ source myproject/bin/active
+   $ source myproject/bin/activate
 
 .. rst-class:: build-item-2
 
@@ -140,7 +146,7 @@ Just pip install them from git.
 
    $ pip install -e git+https://github.com/nyergler/hieroglyph.git#egg=hieroglyph
 
-If you what to hack your own version, fork it and install it in editable mode:
+If you want to hack your own version, fork it and install it in editable mode:
 
 .. code-block:: console
 
@@ -150,7 +156,7 @@ If you have it cloned locally already
 
 .. code-block:: console
 
-   $ pip install -e ~/projects/hieroglyph#egg=hieroglyph
+   $ pip install -e ~/projects/hieroglyph
 
 Freeze
 ======
@@ -192,20 +198,20 @@ Current state
 
 .. rst-class:: build-item-2
 
-**It does not need to be so.**
+**It does not need to be so difficult.**
 
 .. rst-class:: build-item-2
 
 After all Odoo addons are just python code.
 
-Now you can do this
-===================
+With to setuptools-odoo, you can now do this
+============================================
 
 Install Odoo 9 latest nightly:
 
 .. code-block:: console
 
-   $ pip install https://nightly.odoo.com/9.0/nightly/src/odoo_9.0c.latest.zip
+   $ pip install https://nightly.odoo.com/9.0/nightly/src/odoo_9.0.latest.zip
 
 Install ``mis_builder`` and it's dependencies:
 
@@ -218,8 +224,8 @@ Install ``mis_builder`` and it's dependencies:
      odoo9-addon-date-range, odoo9-addon-report-xlsx, 
      xlsxwriter 
 
-Notice two addons (date_range, report_xlsx) from different OCA github repositories,
-and one python library (xslxwriter) are automatically installed.
+Notice the installation of two dependent addons (date_range, report_xlsx) 
+from different OCA github repositories, and one python library (xslxwriter).
 
 .. nextslide::
    :increment:
@@ -251,7 +257,7 @@ Create the following directory structure:
 
    setup.py
    odoo_addons/__init__.py
-   odoo_addons/youraddon/__manifest__.py
+   odoo_addons/youraddon/__openerp__.py
    odoo_addons/youraddon/__init__.py
    odoo_addons/youraddon/models/...
 
@@ -277,7 +283,7 @@ And ``setup.py`` is:
    )
 
 The ``odoo_addon`` keyword does the magic by examining the 
-addon's ``__manifest__.py``.
+addon's ``__openerp__.py``.
 
 .. nextslide::
    :increment:
@@ -305,7 +311,17 @@ In this example it is the equivalent of:
 Automatic discovery of installed addons
 =======================================
 
-TODO, pending https://github.com/odoo/odoo/pull/13237
+In Odoo 8 and 9, addons installed this way can be
+discovered automatically using 
+`odoo-autodiscover <https://pypi.python.org/pypi/odoo-autodiscover>`_.
+
+In Odoo 10, autodiscovery of installed addons is a
+built-in feature, so starting ``odoo`` is enough for it
+to extend the addons-path automatically..
+
+The main difference between 8/9 and 10 is that in the
+namespace package for addons is ``odoo.addons`` (directory ``odoo/addons``)
+instead of ``odoo_addons`` (in 8 and 9).
 
 Bringing Odoo into the python ecosystem
 =======================================
@@ -315,3 +331,31 @@ Bringing Odoo into the python ecosystem
 - robust install/uninstall
 - freeze !
 - pythonistas don't need to learn new tools
+
+.. rst-class:: content-auto-fadein
+
+Q&A
+===
+
+|
+
+|
+
+|
+
+|
+
+.. rst-class:: centered large-text
+
+Thank You
+
+|
+
+|
+
+.. rst-class:: centered
+
+| @sbidoul
+| stephane.bidoul@acsone.eu
+| https://acsone.eu/
+| https://wheelhouse.odoo-community.org/
