@@ -204,8 +204,8 @@ Current state
 
 After all Odoo addons are just python code.
 
-With to setuptools-odoo, you can now do this
-============================================
+With setuptools-odoo, you can now do this
+=========================================
 
 Install Odoo 9 latest nightly:
 
