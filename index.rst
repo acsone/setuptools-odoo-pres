@@ -303,7 +303,7 @@ Create the following directory structure:
    odoo_addons/youraddon/__init__.py
    odoo_addons/youraddon/models/...
 
-Where ``odoo_addons/__init__.py`` contain:
+Where ``odoo_addons/__init__.py`` contains:
 
 .. code-block:: python
 
@@ -365,7 +365,7 @@ Create the following directory structure:
    odoo/addons/youraddon/__init__.py
    odoo/addons/youraddon/models/...
 
-Where ``odoo/__init__.py`` and ``odoo/addons/__init__.py`` contain:
+Where ``odoo/__init__.py`` and ``odoo/addons/__init__.py`` contains:
 
 .. code-block:: python
 
