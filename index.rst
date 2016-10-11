@@ -20,7 +20,7 @@ Odoo development workflow with pip and virtualenv
 
 |
 
-Version 1.1.0
+Version 1.2.0
 
 Stéphane Bidoul <stephane.bidoul@acsone.eu>
 
@@ -204,8 +204,8 @@ Current state
 
 After all Odoo addons are just python code.
 
-With setuptools-odoo, you can now do this
-=========================================
+With setuptools-odoo, you can now do this [9.0]
+===============================================
 
 Install Odoo 9 latest nightly:
 
@@ -218,7 +218,7 @@ Install ``mis_builder`` and it's dependencies:
 .. code-block:: console
    :emphasize-lines: 1,1
 
-   $ pip install odoo9-addon-mis_builder -f https://wheelhouse.acsone.eu/oca
+   $ pip install odoo9-addon-mis_builder -f https://wheelhouse.odoo-community.org/oca
    Installing collected packages: 
      odoo9-addon-mis-builder,
      odoo9-addon-date-range, odoo9-addon-report-xlsx, 
@@ -248,8 +248,50 @@ You can work with development branches too:
    > @9.0-imp_mis_builder_style_9e_tbi#\
    > egg=odoo9-addon-mis_builder\&subdirectory=setup/mis_builder
 
-Packaging your own addons
-=========================
+With setuptools-odoo, you can now do this [10.0]
+================================================
+
+Install Odoo 10 latest nightly:
+
+.. code-block:: console
+
+   $ pip install https://nightly.odoo.com/10.0/nightly/src/odoo_10.0.latest.zip
+
+Install ``account_fiscal_year`` and it's dependencies:
+
+.. code-block:: console
+   :emphasize-lines: 1,1
+
+   $ pip install odoo10-addon-account_fiscal_year -f https://wheelhouse.odoo-community.org/oca
+   Installing collected packages: 
+     odoo10-addon-date-range
+
+Notice the installation of one dependent addons (date_range) 
+from different OCA github repositories.
+
+.. nextslide::
+   :increment:
+
+Freeze:
+
+.. code-block:: console
+
+   $ pip freeze | grep odoo
+   odoo==10.0.post20161011
+   odoo10-addon-account-fiscal-year==10.0.1.0.0
+   odoo10-addon-date-range==10.0.1.0.0
+
+You can work with development branches too:
+
+.. code-block:: console
+
+   $ pip install -e git+https://github.com/acsone/account-invoicing\
+   > @10-mig-account_invoice_supplier_ref_unique-ape#\
+   > egg=odoo10-addon-account_invoice_supplier_ref_unique\
+   > \&subdirectory=setup/account_invoice_supplier_ref_unique
+
+Packaging your own addons [9.0]
+===============================
 
 Create the following directory structure:
 
@@ -295,16 +337,79 @@ In this example it is the equivalent of:
    from setuptools import setup
 
    setup(
-      name='odoo9-addon-mis_builder',
+      name='odoo9-addon-youraddon',
       version='...',           # version from manifest
       description='...',       # summary from manifest
       long_description='...',  # description from manifest or README.rst
       url='...',               # url from manifest
       install_requires=['odoo>=9.0a,<9.1a',
-                        'odoo9-addon-report_xslx', 'odoo9-addon-date_range'],
+                        'odoo9-addon-dependency1', 'odoo9-addon-dependency2',
+                        'some_python_dependency'],
       packages=['odoo_addons',
-                'odoo_addons.mis_builder', 'odoo_addons.mis_builder.models', ...],
+                'odoo_addons.youraddon', 'odoo_addons.youraddon.models', ...],
       namespace_packages=['odoo_addons'],
+      include_package_data=True,
+      license='AGPL-3')
+
+Packaging your own addons [10.0]
+================================
+
+Create the following directory structure:
+
+.. code::
+
+   setup.py
+   odoo/__init__.py
+   odoo/addons/__init__.py
+   odoo/addons/youraddon/__manifest__.py
+   odoo/addons/youraddon/__init__.py
+   odoo/addons/youraddon/models/...
+
+Where ``odoo/__init__.py`` and ``odoo/addons/__init__.py`` contain:
+
+.. code-block:: python
+
+   __import__('pkg_resources').declare_namespace(__name__)
+
+.. nextslide::
+   :increment:
+
+And ``setup.py`` is:
+
+.. code-block:: python
+   :emphasize-lines: 4,5
+
+   from setuptools import setup
+
+   setup(
+     setup_requires=['setuptools-odoo']
+     odoo_addon=True,
+   )
+
+The ``odoo_addon`` keyword does the magic by examining the 
+addon's ``__manifest__.py``.
+
+.. nextslide::
+   :increment:
+
+In this example it is the equivalent of:
+
+.. code-block:: python
+
+   from setuptools import setup
+
+   setup(
+      name='odoo10-addon-youraddon',
+      version='...',           # version from manifest
+      description='...',       # summary from manifest
+      long_description='...',  # description from manifest or README.rst
+      url='...',               # url from manifest
+      install_requires=['odoo>=10.0,<10.1dev',
+                        'odoo10-addon-dependency1', 'odoo10-addon-dependency2',
+                        'some_python_dependency'],
+      packages=['odoo', 'odoo.addons',
+                'odoo.addons.youraddon', 'odoo_addons.youraddon.models', ...],
+      namespace_packages=['odoo', 'odoo.addons'],
       include_package_data=True,
       license='AGPL-3')
 
