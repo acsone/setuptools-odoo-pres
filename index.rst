@@ -20,7 +20,7 @@ Odoo development workflow with pip and virtualenv
 
 |
 
-Version 1.2.0
+Version 1.2.1
 
 Stéphane Bidoul <stephane.bidoul@acsone.eu>
 
@@ -53,37 +53,33 @@ Start reading from `Python Packaging Authority <http://pypa.io/>`_.
 virtualenv
 ==========
 
-.. rst-class:: build-item-1
-
 Create and activate a new virtualenv named ``myproject``:
-
-.. rst-class:: build-item-1
 
 .. code-block:: console
 
    $ virtualenv myproject
    $ source myproject/bin/activate
 
-.. rst-class:: build-item-2
+Upgrade to a recent pip version in your activated virtualenv:
+
+.. code-block:: console
+
+   $ pip install -U "pip>=9.0.1"
+
+.. nextslide::
+   :increment:
 
 To juggle many projects, use `virtualenvwrapper <https://virtualenvwrapper.readthedocs.io/en/latest/>`_.
 
-.. rst-class:: build-item-2
-
 Create and activate a virtualenv for a new project:
-
-.. rst-class:: build-item-2
 
 .. code-block:: console
 
    $ mkdir ~/project1
    $ mkvirtualenv project1 -a ~/project1
-
-.. rst-class:: build-item-2
+   $ pip install -U "pip>=9.0.1"
 
 Easily switch project:
-
-.. rst-class:: build-item-2
 
 .. code-block:: console
 
