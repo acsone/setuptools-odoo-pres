@@ -20,7 +20,7 @@ Odoo development workflow with pip and virtualenv
 
 |
 
-Version 1.2.1
+Version 1.3.0
 
 Stéphane Bidoul <stephane.bidoul@acsone.eu>
 
@@ -214,7 +214,7 @@ Install ``mis_builder`` and it's dependencies:
 .. code-block:: console
    :emphasize-lines: 1,1
 
-   $ pip install odoo9-addon-mis_builder -f https://wheelhouse.odoo-community.org/oca
+   $ pip install odoo9-addon-mis_builder --pre
    Installing collected packages: 
      odoo9-addon-mis-builder,
      odoo9-addon-date-range, odoo9-addon-report-xlsx, 
@@ -222,6 +222,8 @@ Install ``mis_builder`` and it's dependencies:
 
 Notice the installation of two dependent addons (date_range, report_xlsx) 
 from different OCA github repositories, and one python library (xslxwriter).
+
+Tip: ``--pre`` is to get the latest development version of the addon and its dependencies.
 
 .. nextslide::
    :increment:
@@ -258,12 +260,14 @@ Install ``account_fiscal_year`` and it's dependencies:
 .. code-block:: console
    :emphasize-lines: 1,1
 
-   $ pip install odoo10-addon-account_fiscal_year -f https://wheelhouse.odoo-community.org/oca
+   $ pip install odoo10-addon-account_fiscal_year --pre
    Installing collected packages: 
      odoo10-addon-date-range
 
 Notice the installation of one dependent addons (date_range) 
 from different OCA github repositories.
+
+Tip: ``--pre`` is to get the latest development version of the addon and its dependencies.
 
 .. nextslide::
    :increment:

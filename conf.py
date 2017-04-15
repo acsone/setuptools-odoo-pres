@@ -56,7 +56,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'setuptools-odoo'
-copyright = u'2016, Stéphane Bidoul'
+copyright = u'2016-2017, Stéphane Bidoul'
 author = u'Stéphane Bidoul'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -354,7 +354,7 @@ slide_title = 'setuptools-odoo'
 slide_theme = 'slides2'
 slide_levels = 3
 # slide_numbers = True  # not compatible with slide2
-slide_footer = u'Copyright © 2016 ACSONE SA/NV'
+slide_footer = u'Copyright © 2016-2017 ACSONE SA/NV'
 
 # Place custom static assets in the _static directory and uncomment
 # the following lines to include them
